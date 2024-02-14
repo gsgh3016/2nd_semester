@@ -122,6 +122,8 @@ def prior_probabilities(
         y=audio_signal, fmin=fmin * 0.9, fmax=fmax * 1.1,
         sr=srate, frame_length=frame_length, win_length=int(frame_length / 2),
         hop_length=hop_length)
+    pitch = np.nan_to_num(pitch, nan=0.0)  # NaN 값을 0으로 대체
+    pitch[pitch < 0] = 0  # 음수 값을 0으로 설정
     tuning = librosa.pitch_tuning(pitch)
     f0_ = np.round(librosa.hz_to_midi(pitch - tuning)).astype(int)
     onsets = librosa.onset.onset_detect(
@@ -271,7 +273,7 @@ def wave_to_midi(
         srate: int = 22050,
         frame_length: int = 2048,
         hop_length: int = 512,
-        note_min: str = "A2",
+        note_min: str = "A0",
         note_max: str = "E5",
         p_stay_note: float = 0.9,
         p_stay_silence: float = 0.7,
@@ -320,7 +322,7 @@ def wave_to_midi(
     states = librosa.sequence.viterbi(priors, transmat, p_init=p_init)
 
     pianoroll = states_to_pianoroll(states, note_min, hop_length / srate)
-    bpm = librosa.beat.tempo(y=audio_signal)[0]
+    bpm = librosa.feature.rhythm.tempo(y=audio_signal, sr=srate)
     midi = pianoroll_to_midi(bpm, pianoroll)
 
     return midi
