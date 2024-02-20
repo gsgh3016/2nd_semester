@@ -162,3 +162,7 @@ cython_debug/
 fall-semester-project
 .DS_Store
 *.tar.gz
+lmd_full/
+md5_to_paths.json
+*.mid
+clean_midi/
