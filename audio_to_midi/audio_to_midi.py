@@ -1,17 +1,12 @@
-import subprocess
 import os
+from dataset_download import prepare_dataset
 
 
-# download lakh dataset
-script_path = 'lakh_dataset.sh'
-file_path = 'lmd_full.tar.gz'
+mp3_url = "http://calab1.ucsd.edu/~datasets/cal500/cal500data/CAL500_32kps.tar"
+midi_url = "http://hog.ee.columbia.edu/craffel/lmd/clean_midi.tar.gz"
 
 os.chdir('./audio_to_midi')
 
-print('check dataset file exists.')
-if not os.path.exists(file_path):
-    print(f'{file_path} not found. Executing {script_path} to download and extract.\n')
-    subprocess.run(['bash', script_path], check=True)
-else:
-    print(f'{file_path} already exists. No need to execute {script_path}.')
-print('dataset is ready.')    
+print('데이터셋 확인')
+prepare_dataset(mp3_url)
+prepare_dataset(midi_url)
