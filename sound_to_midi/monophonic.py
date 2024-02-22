@@ -231,7 +231,7 @@ def states_to_pianoroll(states: list, note_min: str, hop_time: float) -> list:
     return output
 
 
-def pianoroll_to_midi(bpm: float, pianoroll: list) -> midiutil.MIDIFile():
+def pianoroll_to_midi(bpm: float, pianoroll: list) -> midiutil.MIDIFile:
     """
     Converts an internal piano roll notation to a MIDI file
 
@@ -280,7 +280,7 @@ def wave_to_midi(
         pitch_acc: float = 0.9,
         voiced_acc: float = 0.9,
         onset_acc: float = 0.9,
-        spread: float = 0.2) -> midiutil.MIDIFile():
+        spread: float = 0.2) -> midiutil.MIDIFile:
     """Converts an audio signal to a MIDI file
 
     Args:
