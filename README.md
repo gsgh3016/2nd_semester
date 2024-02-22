@@ -64,8 +64,15 @@ deactivate
 ```bash
 pip install -r requirements.txt
 ```
+## 디렉토리 설명
 
-## 사용 방법
+1. input: 사용자 음원
+2. output: 악기 별 분리 음원(기본 값 bass, drums, other, vocals)
+3. figures: 악기 별 그래프({곡 제목}\_{악기}\_{그래프 종류}.png)
+4. midi_output: 두 모델(```sound_to_midi```, ```basic_pitch```)에 따른 악기 별 MIDI 파일
+5. docs: 발표 자료
+
+    \* **sound_to_midi**: [tiagoft/audio_to_midi](https://github.com/tiagoft/audio_to_midi) 레포지토리 클론 후 모듈 버전에 따른 코드 수정
 
 ## 참고 자료 및 기록
 
