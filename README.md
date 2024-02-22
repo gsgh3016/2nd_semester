@@ -14,10 +14,6 @@
 - **STFT &rarr; Magnitude to dB scale &rarr; EQ Curve**
 - **Chroma STFT**
 
----
-
-![](https://img.shields.io/badge/OS-macOS_Sonoma_14.2.1-%23000000) ![](https://img.shields.io/badge/IDE-Visual_Studio_Code-%23007ACC) ![](https://img.shields.io/badge/가상환경-pyenv,_venv-%233776AB)
-
 ### Automatic Music Transcription
 
 - **audio_to_midi**
@@ -31,12 +27,11 @@
     - Estimating priors
     - [참고](https://github.com/tiagoft/audio_to_midi/blob/master/monophonic_audio_to_midi.md)
 
-## 시작하기
+---
 
-### 환경 설정
-- OS: macOS Sonoma 14.2.1
-- IDE: vscode
-- 가상환경: pyenv, venv
+![](https://img.shields.io/badge/OS-macOS_Sonoma_14.2.1-%23000000) ![](https://img.shields.io/badge/IDE-Visual_Studio_Code-%23007ACC) ![](https://img.shields.io/badge/가상환경-pyenv,_venv-%233776AB)
+
+## 시작하기
 
 ### 설치
 1. 레포지토리 클론하기
