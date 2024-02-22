@@ -164,7 +164,6 @@ fall-semester-project
 *.tar.gz
 lmd_full/
 md5_to_paths.json
-*.mid
 clean_midi/
 CAL500_32kps/
 *.tar
