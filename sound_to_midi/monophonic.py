@@ -322,7 +322,7 @@ def wave_to_midi(
     states = librosa.sequence.viterbi(priors, transmat, p_init=p_init)
 
     pianoroll = states_to_pianoroll(states, note_min, hop_length / srate)
-    bpm = librosa.feature.rhythm.tempo(y=audio_signal, sr=srate)
+    bpm = librosa.feature.tempo(y=audio_signal, sr=srate)
     midi = pianoroll_to_midi(bpm, pianoroll)
 
     return midi
