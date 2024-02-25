@@ -89,7 +89,7 @@ pip install ipykernel
 
 1. 생성한 가상환경을 주피터 노트북 커널에 등록하기
 ```bash
-python -m ipykernel install --user --name={커널 이름 지정} --display-name="선택 메뉴 이름 지정"
+python -m ipykernel install --user --name={커널_이름_지정} --display-name="선택_메뉴_이름_지정"
 ```
 
 2. 명령어로 실행하기(커널 선택 후 노트북 쉘마다 실행할 수 있음)
@@ -101,7 +101,7 @@ python graduate_project.ipynb
 
 1. `input`: 사용자 음원
 2. `output`: 악기 별 분리 음원(기본 값 `bass`, `drums`, `other`, `vocals`)
-3. `figures`: 악기 별 그래프(`{곡 제목}\_{악기}\_{그래프 종류}.png`)
+3. `figures`: 악기 별 그래프(`{곡 제목}_{악기}_{그래프 종류}.png`)
 4. `midi_output`: 두 모델(```sound_to_midi```, ```basic_pitch```)에 따른 악기 별 MIDI 파일
 5. `docs`: 발표 자료
 6. `util`: 사용한 함수 모듈화
@@ -113,5 +113,5 @@ python graduate_project.ipynb
 - [demucs (A Défossez, 2019)](https://arxiv.org/pdf/1911.13254.pdf)
 - [Madmom (S Böck, 2016)](https://arxiv.org/pdf/1605.07008)
 - [basic pitch (RM Bittner, 2022)](https://arxiv.org/pdf/2203.09893.pdf)
-- <a href='https://colab.research.google.com/drive/1dkF6TIuqnE9lv9Si8jY-UDoapvEluvs8?usp=sharing'><img src='https://img.shields.io/badge/기존 프로젝트 소스 코드-Open in Colab-%23F9AB00'/></a> (2022.07 ~ 2022.12)
+- <a href='https://colab.research.google.com/drive/1dkF6TIuqnE9lv9Si8jY-UDoapvEluvs8?usp=sharing'><img src='https://img.shields.io/badge/기존 프로젝트-Open in Colab-%23F9AB00'/></a> (2022.07 ~ 2022.12)
 - **Madmom** 모듈 충돌로 **basic pitch**로 대체 (2024.02)
