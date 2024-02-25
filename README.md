@@ -33,13 +33,27 @@
 
 ## 시작하기
 
-### 설치
-1. 레포지토리 클론하기
+### 0. git LFS 설치(LFS 설치가 안 된 경우)
+
+#### Window
+
+1. [여기](https://github.com/git-lfs/git-lfs/releases)에서 다운로드 받고 실행
+2. 명령 프롬프트 혹은 git에서 `git lfs install` 실행
+
+#### macOS
+
+1. `brew install git-lfs`
+2. `git lfs install`
+
+### 1. 레포지토리 클론하기
+
 ```bash
 git clone https://github.com/gsgh3016/2nd_semester.git
+git lfs pull
 ```
 
-2. (옵션) 가상환경 설정
+### 2. (옵션) 가상환경 설정
+
 ```bash
 # 클론 디렉토리로 이동
 cd /path/to/cloned/project
@@ -60,17 +74,37 @@ source {가상 환경 이름}/bin/activate
 deactivate
 ```
 
-3. 종속성 설치
+### 3. 종속성 설치
+
 ```bash
 pip install -r requirements.txt
 ```
+
+### 4. graduate_project.ipynb 실행
+
+0. ipykernel 모듈이 설치가 안 된 경우
+```bash
+pip install ipykernel
+```
+
+1. 생성한 가상환경을 주피터 노트북 커널에 등록하기
+```bash
+python -m ipykernel install --user --name={커널 이름 지정} --display-name="선택 메뉴 이름 지정"
+```
+
+2. 명령어로 실행하기(커널 선택 후 노트북 쉘마다 실행할 수 있음)
+```bash
+python graduate_project.ipynb
+```
+
 ## 디렉토리 설명
 
-1. input: 사용자 음원
-2. output: 악기 별 분리 음원(기본 값 bass, drums, other, vocals)
-3. figures: 악기 별 그래프({곡 제목}\_{악기}\_{그래프 종류}.png)
-4. midi_output: 두 모델(```sound_to_midi```, ```basic_pitch```)에 따른 악기 별 MIDI 파일
-5. docs: 발표 자료
+1. `input`: 사용자 음원
+2. `output`: 악기 별 분리 음원(기본 값 `bass`, `drums`, `other`, `vocals`)
+3. `figures`: 악기 별 그래프(`{곡 제목}\_{악기}\_{그래프 종류}.png`)
+4. `midi_output`: 두 모델(```sound_to_midi```, ```basic_pitch```)에 따른 악기 별 MIDI 파일
+5. `docs`: 발표 자료
+6. `util`: 사용한 함수 모듈화
 
     \* **sound_to_midi**: [tiagoft/audio_to_midi](https://github.com/tiagoft/audio_to_midi) 레포지토리 클론 후 모듈 버전에 따른 코드 수정
 
