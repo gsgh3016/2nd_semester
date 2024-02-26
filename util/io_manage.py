@@ -66,12 +66,12 @@ def copy_process_streams(process: sp.Popen):
             std.flush()
             
             
-def get_song_name(
+def get_song_names(
     extensions=["mp3", "wav", "ogg", "flac"],
     in_path="input"
-    ) -> str:
+    ) -> list[str]:
     """
-    현재 디렉토리에서 첫 번째 오디오 파일의 이름을 찾아 반환함
+    현재 디렉토리에서 오디오 파일의 이름을 찾아 반환함
     
     Args:
         extensions (list(str)): 제거할 확장자 종류
@@ -80,14 +80,14 @@ def get_song_name(
     Returns:
         str: 오디오 파일의 이름 (확장자 제외)
     """
-    file_name = ""
+    file_names = []
     for _, _, files in os.walk(in_path):
         for file in files:
             if any(file.endswith(ext) for ext in extensions):
-                file_name = file
-                break
-        if file_name:
-            break
-           
-    song_name, _ = os.path.splitext(file_name)
-    return song_name
+                file_names.append(file)
+    
+    song_names = []
+    for file_name in file_names:
+        song_name, _ = os.path.splitext(file_name)
+        song_names.append(song_name)
+    return song_names

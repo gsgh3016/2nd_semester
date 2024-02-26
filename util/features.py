@@ -23,25 +23,24 @@ def read_graph(img_path: str, figsize: Tuple[int, int]):
     plt.show()
 
 
-def create_spectrogram(figure_path: str, instrument: str, D: np.ndarray, sr: int):
+def create_spectrogram(figure_path: str, instrument:str, D: np.ndarray, sr: int):
     """
     주어진 오디오 데이터로부터 스펙트로그램을 생성하고 이미지 파일로 저장함
 
     Args:
-        figure_path (str): 저장할 파일 경로
-        instrument (str): 스펙트로그램을 생성할 악기의 이름
+        figure_path (str): 스펙트로그램을 생성할 경로
+        instrument (str): 스펙트로그램을 생성할 악기
         D (np.ndarray): Short-time Fourier transform (STFT) 결과
         sr (int): 오디오의 샘플링 레이트
     """
     DB = librosa.amplitude_to_db(D, ref=np.max)
-
-    inst_dir = os.path.join(figure_path, instrument)
-    create_dir(inst_dir)
-    spectrogram_path = os.path.join(inst_dir, f'{get_song_name()}_{instrument}_spectrogram.png')
+    
+    if not os.path.exists(figure_path):
+        create_dir(figure_path)
+    spectrogram_path = os.path.join(figure_path, f'{instrument}_spectrogram.png')
 
     figsize = (64, 24)
     if not os.path.exists(spectrogram_path):
-        os.makedirs(inst_dir, exist_ok=True)
         plt.figure(figsize=figsize)
         librosa.display.specshow(DB, sr=sr, hop_length=512, x_axis='time', y_axis='log')
         plt.colorbar(format='%+2.0fdB')
@@ -62,9 +61,9 @@ def create_eq_curve(figure_path: str, instrument: str, D: np.ndarray, sr: int):
         D (np.ndarray): Short-time Fourier transform (STFT) 결과
         sr (int): 오디오의 샘플링 레이트
     """
-    inst_dir = os.path.join(figure_path, instrument)
-    create_dir(inst_dir)
-    eq_curve_path = os.path.join(inst_dir, f'{get_song_name()}_{instrument}_eq_curve.png')
+    if not os.path.exists(figure_path):
+        create_dir(figure_path)
+    eq_curve_path = os.path.join(figure_path, f'{instrument}_eq_curve.png')
     mean_amplitude = librosa.amplitude_to_db(np.mean(D, axis=1), ref=np.max)
 
     frequencies = librosa.fft_frequencies(sr=sr, n_fft=2048)
@@ -108,9 +107,9 @@ def create_mel_spectrogram(figure_path: str, instrument: str, y: np.ndarray, sr:
     S = librosa.feature.melspectrogram(y=y, sr=sr)
     S_DB = librosa.amplitude_to_db(S, ref=np.max)
     
-    inst_dir = os.path.join(figure_path, instrument)
-    create_dir(inst_dir)
-    mel_path = os.path.join(inst_dir, f'{get_song_name()}_{instrument}_mel_spectrogram.png')
+    if not os.path.exists(figure_path):
+        create_dir(figure_path)
+    mel_path = os.path.join(figure_path, f'{instrument}_mel_spectrogram.png')
     
     figsize = (64, 24)
     if not os.path.exists(mel_path):
@@ -135,9 +134,9 @@ def create_chroma(figure_path: str, instrument: str, y: np.ndarray, sr: int):
     """
     chromagram = librosa.feature.chroma_stft(y=y, sr=sr, hop_length=512)
     
-    inst_dir = os.path.join(figure_path, instrument)
-    create_dir(inst_dir)
-    chroma_path = os.path.join(inst_dir, f'{get_song_name()}_{instrument}_chroma.png')
+    if not os.path.exists(figure_path):
+        create_dir(figure_path)
+    chroma_path = os.path.join(figure_path, f'{instrument}_chroma.png')
     
     figsize = (16, 6)
     if not os.path.exists(chroma_path):
